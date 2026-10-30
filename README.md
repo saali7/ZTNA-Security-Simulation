@@ -147,6 +147,13 @@ Its main capabilities include:
 - Privacy-aware result presentation
 
 The dashboard uses experimental result files, including `phase3_summary.csv`, to present access decisions and test outcomes.
+### Dashboard Overview
+
+![ZTNA Security Dashboard](docs/images/ztna-dashboard-overview.png)
+
+*Figure 2. Security dashboard showing the three-phase comparison and Phase 3 policy validation results: 11 PASS, 0 FAIL, 2 ALLOW, 5 DENY, and 4 QUARANTINE.*
+
+**Note:** The security effectiveness bars are illustrative comparisons, not experimentally calculated effectiveness percentages.
 
 ## 8. Experimental Results and Key Findings
 
