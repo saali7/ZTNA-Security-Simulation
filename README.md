@@ -1,165 +1,56 @@
 # Design, Implementation, and Experimental Evaluation of a Zero Trust Network Access Defense System
 
-**A three-phase experimental cybersecurity framework integrating context-aware access control, behavioral threat detection, risk-based policy enforcement, automated threat containment, and privacy-aware security analysis.**
+**An experimental cybersecurity framework integrating context-aware access control, behavioral threat detection, risk-based policy enforcement, automated containment, and privacy-aware security analysis.**
 
 ## 1. Project Overview
 
-This project presents the design, implementation, and experimental evaluation of a Zero Trust Network Access (ZTNA) defense system within a controlled, Mininet-based network environment.
+This project presents the design, implementation, and experimental evaluation of a **Zero Trust Network Access (ZTNA) defense system** using a controlled Mininet-based network environment.
 
-The framework investigates how different security architectures respond to legitimate communication, unauthorized access attempts, network reconnaissance, lateral movement, and SYN flood attacks.
+The research investigates how different security architectures respond to legitimate traffic, unauthorized access, network reconnaissance, lateral movement, and SYN flood attacks.
 
-The experimental design consists of three phases:
+Three security models are implemented and compared:
 
-1. **Phase 1 — Baseline Network:** An unrestricted network without additional security controls.
-2. **Phase 2 — Traditional Firewall:** A firewall-based security model applying packet filtering, logging, and rate limiting.
-3. **Phase 3 — Zero Trust Architecture:** A context-aware access-control system integrating behavioral detection, cumulative risk scoring, policy decisions, and automated enforcement.
+- **Phase 1 — Baseline:** An unrestricted network without additional security controls.
+- **Phase 2 — Traditional Firewall:** Rule-based traffic filtering, logging, and rate limiting.
+- **Phase 3 — Zero Trust:** Context-aware access control integrating behavioral detection, cumulative risk scoring, policy decisions, and automated enforcement.
 
-The primary objective is to experimentally evaluate how Zero Trust principles improve access control, restrict unauthorized internal communication, and support threat containment compared with traditional network security approaches.
-### System Architecture
+The objective is to evaluate how Zero Trust principles strengthen access control, restrict unauthorized internal communication, and improve threat containment compared with traditional approaches.
+
+## 2. Key Security Features
+
+- **Context-Aware Access Control:** Evaluates predefined network roles, destinations, observed behavior, and security policies.
+- **Behavioral Threat Detection:** Identifies selected port scanning, subnet scanning, SYN flood, and lateral movement activities.
+- **Risk-Based Decision Engine:** Uses weighted event scoring to classify threats into LOW, MEDIUM, and HIGH risk levels.
+- **Automated Policy Enforcement:** Applies **ALLOW, DENY, and QUARANTINE** decisions using Linux networking rules.
+- **Least-Privilege Access:** Restricts unauthorized communication with protected application and database resources.
+- **Privacy-Aware Logging:** Anonymizes selected network identifiers while retaining experimental evidence.
+- **Security Analytics Dashboard:** Presents security decisions, risk classifications, attack scenarios, and experimental outcomes.
+
+## 3. Experimental Architecture & Methodology
+
+The project follows a three-phase comparative experimental methodology, using Mininet to simulate legitimate users, unknown hosts, and protected resources.
 
 ![ZTNA Simulation Architecture](docs/images/ztna-architecture.png)
 
-*Figure 1. High-level architecture of the three-phase ZTNA simulation, showing the protected resources, security control layer, traffic sources, and monitoring components.*
+*Figure 1. High-level architecture of the three-phase security simulation.*
 
-## 2. Research Objectives
-
-The project aims to:
-
-- Design and implement a controlled network simulation environment.
-- Generate legitimate and malicious network traffic.
-- Evaluate the security limitations of unrestricted network communication.
-- Analyze the effectiveness and limitations of traditional firewall controls.
-- Implement context-aware Zero Trust access policies.
-- Detect suspicious network behaviors and classify associated risks.
-- Enforce ALLOW, DENY, and QUARANTINE decisions.
-- Collect and anonymize experimental evidence.
-- Compare security outcomes across three network architectures.
-
-## 3. Key Security Features
-
-### Context-Aware Access Control
-
-Access decisions consider predefined source and destination roles, observed behavior, risk classification, and security policies.
-
-### Behavioral Threat Detection
-
-The system evaluates selected suspicious activities, including:
-
-- Port scanning
-- Subnet scanning
-- SYN flood behavior
-- Unauthorized lateral movement attempts
-
-### Risk-Based Decision Engine
-
-A weighted, rule-based risk scoring mechanism classifies suspicious events into LOW, MEDIUM, and HIGH risk levels.
-
-### Automated Policy Enforcement
-
-Security decisions are implemented using Linux networking mechanisms:
-
-- **ALLOW:** Permit communication explicitly authorized by policy.
-- **DENY:** Block unauthorized communication.
-- **QUARANTINE:** Restrict sources associated with high-risk behavior.
-
-### Least-Privilege Access
-
-The Zero Trust phase limits communication according to predefined network roles and permitted resource relationships.
-
-For example, legitimate USER → APP_SERVER and APP_SERVER → DATABASE communication is permitted, while unauthorized direct database access is denied.
-
-### Privacy-Aware Security Logging
-
-The framework collects experimental logs and supporting evidence, with anonymization mechanisms that replace network identifiers in selected records to reduce unnecessary exposure of sensitive information.
-
-### Security Analytics Dashboard
-
-A Flask-based dashboard presents phase comparisons, access decisions, risk classifications, testing outcomes, attack narratives, and supporting evidence.
-
-## 4. Experimental Methodology
-
-The project uses a controlled, comparative experimental design.
-
-| Phase | Security Architecture | Evaluation Focus |
+| Phase | Security Model | Evaluation Focus |
 |---|---|---|
-| Phase 1 | Baseline | Network exposure without additional security controls |
-| Phase 2 | Traditional Firewall | Traffic filtering, logging, and rate limiting |
-| Phase 3 | Zero Trust | Context-aware access decisions, behavioral detection, and automated containment |
+| 1 | Baseline | Unrestricted network behavior |
+| 2 | Traditional Firewall | Filtering, logging, and rate limiting |
+| 3 | Zero Trust | Policy-based decisions and risk-based containment |
 
-Selected scenarios are evaluated across the security phases to investigate differences in access permissions, reconnaissance exposure, lateral communication, and attack mitigation.
+The Zero Trust topology includes four principal network roles: **USER, UNKNOWN, APP_SERVER, and DATABASE**. Legitimate communication is permitted according to predefined policies, while unauthorized requests and suspicious behavior are restricted.
 
-### Network Environment
-
-The simulation uses Mininet to create virtual hosts, network links, and services.
-
-The Phase 3 topology includes four principal network roles:
-
-- **USER:** Legitimate user host.
-- **UNKNOWN:** Unauthorized or potentially malicious host.
-- **APP_SERVER:** Protected application service.
-- **DATABASE:** Sensitive internal resource.
-
-These components provide a controlled environment for testing authorized and unauthorized communication.
-
-## 5. Zero Trust Decision Pipeline
-
-The Zero Trust implementation follows a structured access-decision workflow:
+### Zero Trust Decision Pipeline
 
 **Identity → Behavior → Risk → Policy → Enforcement → Evidence**
 
-1. **Identity:** Determine predefined source and destination network roles.
-2. **Behavior:** Evaluate traffic characteristics and identify suspicious events.
-3. **Risk:** Calculate cumulative risk scores and classify risk levels.
-4. **Policy:** Select ALLOW, DENY, or QUARANTINE according to defined security rules.
-5. **Enforcement:** Apply the selected restrictions through Linux network rules.
-6. **Evidence:** Record decisions, outcomes, and supporting information for analysis.
+Each access request is evaluated using network role mappings, behavioral indicators, and risk classification before a policy decision is enforced and recorded.
 
-This pipeline provides an explainable approach to security policy enforcement within the simulated environment.
+## 4. Experimental Results & Key Findings
 
-## 6. Technologies and Tools
-
-| Technology | Purpose |
-|---|---|
-| Python 3 | Security logic, testing, and automation |
-| Mininet | Virtual network simulation |
-| Ubuntu / Linux | Experimental operating environment |
-| iptables | Firewall rules and access enforcement |
-| Flask | Security analytics dashboard |
-| HTML / CSS | Dashboard interface |
-| Nmap | Port and subnet scanning tests |
-| hping3 | SYN flood traffic generation |
-| tcpdump | Packet capture and traffic evidence |
-| CSV / Text Logs | Experimental results and analysis |
-
-## 7. Security Analytics Dashboard
-
-The Flask-based dashboard provides a structured view of the experimental evaluation.
-
-Its main capabilities include:
-
-- Three-phase security comparison
-- Zero Trust policy decision summaries
-- ALLOW / DENY / QUARANTINE metrics
-- Expected versus actual test outcomes
-- Risk scores and risk classifications
-- Attack scenario narratives
-- Security logs and supporting evidence
-- Privacy-aware result presentation
-
-The dashboard uses experimental result files, including `phase3_summary.csv`, to present access decisions and test outcomes.
-### Dashboard Overview
-
-![ZTNA Security Dashboard](docs/images/ztna-dashboard-overview.png)
-
-*Figure 2. Security dashboard showing the three-phase comparison and Phase 3 policy validation results: 11 PASS, 0 FAIL, 2 ALLOW, 5 DENY, and 4 QUARANTINE.*
-
-**Note:** The security effectiveness bars are illustrative comparisons, not experimentally calculated effectiveness percentages.
-
-## 8. Experimental Results and Key Findings
-
-The three-phase evaluation demonstrated differences between unrestricted communication, traditional firewall-based protection, and Zero Trust policy enforcement.
-
-### Three-Phase Security Comparison
+The evaluation demonstrated how security behavior changed across the three experimental phases.
 
 | Security Scenario | Baseline | Firewall | Zero Trust |
 |---|---|---|---|
@@ -170,80 +61,42 @@ The three-phase evaluation demonstrated differences between unrestricted communi
 | Unauthorized lateral movement | Allowed | Allowed | Denied |
 | SYN flood | Unrestricted | Rate-limited | Quarantined |
 
-These findings indicate that traditional firewall rules reduced selected attack effects but did not fully prevent unauthorized access or lateral communication in the experimental topology.
+### Phase 3 — Policy Validation
 
-In contrast, the Zero Trust phase applied policy-based restrictions and risk-based containment decisions.
+All **11 predefined Zero Trust test scenarios passed**, with actual decisions matching their expected outcomes.
 
-### Phase 3 — Policy Validation Results
-
-The Zero Trust implementation was evaluated through 11 predefined policy test scenarios.
-
-| Metric | Recorded Result |
-|---|---|
+| Metric | Result |
+|---|---:|
 | Total Tests | 11 |
-| Passed Tests | 11 |
-| Failed Tests | 0 |
+| Passed / Failed | 11 / 0 |
 | ALLOW Decisions | 2 |
 | DENY Decisions | 5 |
 | QUARANTINE Decisions | 4 |
 
-**All 11 predefined tests passed, with actual decisions matching the expected policy outcomes.**
+**Key findings:**
 
-These results demonstrate functional correctness for the selected scenarios rather than universal protection against all cyberattacks.
+- Legitimate USER → APP_SERVER and APP_SERVER → DATABASE communication was permitted.
+- Unauthorized access to protected resources and unnecessary internal communication was denied.
+- Scanning and SYN flood scenarios triggered QUARANTINE decisions.
+- A normally trusted user performing port scanning was quarantined, demonstrating that predefined trust does not override suspicious behavior.
 
-### Key Finding 1 — Legitimate Access Preservation
+These results demonstrate the effectiveness of the implemented policies within the tested simulation scenarios, rather than universal protection against cyberattacks.
 
-The system allowed required communication between legitimate users and authorized services.
+## 5. Security Analytics Dashboard
 
-For example:
+A Flask-based dashboard provides visual analysis of the three experimental phases, including access decisions, risk scores, expected versus actual outcomes, attack narratives, and supporting logs.
 
-- USER → APP_SERVER: ALLOW
-- APP_SERVER → DATABASE: ALLOW
+![ZTNA Security Dashboard](docs/images/ztna-dashboard-overview.png)
 
-### Key Finding 2 — Unauthorized Access Prevention
+*Figure 2. Security dashboard showing phase comparison and Zero Trust validation results: 11 PASS, 0 FAIL, 2 ALLOW, 5 DENY, and 4 QUARANTINE.*
 
-The system denied communication that violated predefined access policies, including direct access to sensitive internal resources.
+**Note:** The dashboard's security effectiveness bars are illustrative comparisons, not experimentally calculated effectiveness percentages.
 
-Examples include:
+## 6. Technologies & Implementation
 
-- USER → DATABASE: DENY
-- UNKNOWN → APP_SERVER: DENY
-- UNKNOWN → DATABASE: DENY
-- UNKNOWN → USER: DENY
+**Technologies:** Python 3, Mininet, Ubuntu/Linux, iptables, Flask, HTML/CSS, Nmap, hping3, tcpdump, and CSV-based logging.
 
-### Key Finding 3 — Trusted User Behavioral Quarantine
-
-One of the most significant experimental observations involved a legitimate user performing suspicious port scanning.
-
-Although the source belonged to a trusted network role, the system identified the risky behavior and returned a QUARANTINE decision.
-
-This result demonstrates the importance of evaluating observed behavior rather than relying exclusively on predefined source trust.
-
-### Key Finding 4 — Lateral Movement Restriction
-
-Unauthorized internal communication succeeded in the baseline and firewall phases under the tested conditions.
-
-The Zero Trust phase restricted the corresponding unauthorized internal access attempts through policy enforcement.
-
-### Key Finding 5 — Privacy-Aware Evidence Collection
-
-The framework generated experimental logs and anonymized records, supporting security analysis while reducing exposure of selected network identifiers.
-
-## 9. Research Contribution
-
-This work contributes a controlled experimental framework for investigating Zero Trust access-control behavior through comparative security evaluation.
-
-Its principal contributions include:
-
-1. **Comparative Architecture Evaluation:** A structured comparison of baseline, firewall, and Zero Trust security models.
-2. **Explainable Security Decisions:** Integration of network role identification, behavioral detection, cumulative risk scoring, and policy-based enforcement.
-3. **Risk-Based Threat Containment:** Evaluation of automated quarantine responses to selected suspicious activities.
-4. **Least-Privilege Network Segmentation:** Restriction of unauthorized internal communication and access to sensitive resources.
-5. **Privacy-Aware Experimental Analysis:** Integration of anonymized logs and supporting security evidence.
-
-The project emphasizes practical implementation and architectural evaluation rather than relying exclusively on theoretical analysis.
-
-## 10. Project Structure
+### Project Structure
 
 ```text
 ZTNA-Security-Simulation/
@@ -257,118 +110,80 @@ ZTNA-Security-Simulation/
 │   └── templates/
 ├── logs/
 │   ├── anonymized/
-│   ├── phase3_summary.csv
-│   └── experimental result files
+│   └── phase3_summary.csv
+├── docs/
+│   └── images/
 ├── README.md
 └── .gitignore
 ```
 
-## 11. Execution Requirements
+### How to Run
 
-The project is designed for a Linux environment supporting Mininet and Linux networking tools.
+A Linux environment with Python 3, Mininet, iptables, Nmap, hping3, tcpdump, curl, and Flask is required.
 
-Required components include:
-
-- Python 3
-- Mininet
-- iptables
-- tcpdump
-- Nmap
-- hping3
-- curl
-- Flask
-
-Install Flask in the appropriate Python environment:
-
-```bash
-python3 -m pip install flask
-```
-
-Additional system packages and permissions may be required depending on the Linux distribution and environment.
-
-### Phase 1 — Baseline
+**Phase 1 — Baseline**
 
 ```bash
 cd code/phase1_baseline
 sudo python3 baseline_phase.py
 ```
 
-### Phase 2 — Traditional Firewall
+**Phase 2 — Traditional Firewall**
 
 ```bash
 cd code/phase2_firewall
 sudo python3 run_firewall_phase.py
 ```
 
-### Phase 3 — Zero Trust
+**Phase 3 — Zero Trust**
 
 ```bash
 cd code/phase3_ztna
 sudo bash run_phase3.sh
 ```
 
-### Security Dashboard
+**Security Dashboard**
 
 From the repository root:
 
 ```bash
+python3 -m pip install flask
 cd dashboard
 python3 app.py
 ```
 
-Open the local address displayed by Flask in a web browser.
+Open the local address provided by Flask.
 
-**Note:** The project was developed and tested in a controlled Linux-based simulation. Reproduction on a newly configured environment may require additional dependency and network setup. The published code has not yet been fully revalidated on a fresh installation.
+*The project was developed in a controlled Linux simulation environment. Reproduction on a fresh installation may require additional dependency configuration and network setup and has not yet been fully revalidated.*
 
-## 12. Scope and Limitations
+## 7. Research Contribution
 
-This project is an academic security prototype, not a production-ready enterprise ZTNA solution.
+The project provides a practical experimental framework for comparing baseline, firewall, and Zero Trust security architectures.
 
-Important limitations include:
+Its main contribution is the integration of **role-aware access control, behavioral detection, cumulative risk scoring, explainable policy decisions, automated threat containment, and privacy-aware evidence collection** within a comparative network security experiment.
 
-- Experiments were conducted within a small simulated topology.
-- Evaluation was limited to selected access and attack scenarios.
-- Identity evaluation relies on predefined network role mappings rather than integration with a production identity provider.
-- Risk scoring is based on predefined event weights rather than a trained machine learning model.
-- The experimental tests do not establish security effectiveness against unknown attacks or large-scale production workloads.
-- Broader performance and scalability measurements remain areas for further evaluation.
+The work emphasizes how access decisions are determined and enforced, supported by observed experimental outcomes.
 
-These limitations define the scope of the conclusions and provide opportunities for future research.
+## 8. Limitations & Future Research
 
-## 13. Future Research Directions
+This implementation is an academic prototype rather than a production-ready enterprise security platform. Identity evaluation relies on predefined network role mappings, and risk classification uses rule-based scoring rather than machine learning.
 
-Potential extensions include:
+The evaluation is limited to a small simulated topology and selected attack scenarios.
 
-- Integration with authenticated identity providers
-- Device posture assessment
-- Dynamic and adaptive access policies
-- Machine-learning-assisted anomaly detection
-- Advanced lateral movement and credential misuse scenarios
-- Larger network topologies and more complex security environments
-- Automated quantitative security metrics
-- Performance evaluation using latency, throughput, and resource utilization
-- Expanded reproducibility and comparative benchmarking
+Future research could extend the framework through authenticated identity providers, device posture assessment, adaptive security policies, machine-learning-assisted anomaly detection, larger topologies, and quantitative performance benchmarking.
 
-These extensions could support further investigation of adaptive and context-aware Zero Trust security architectures.
+## 9. Academic Context
 
-## 14. Academic Context
-
-This project was developed as an undergraduate graduation research project for the Bachelor of Science in Information Technology and Computing at Arab Open University, Egypt.
-
-**Project Title:** Design, Simulation, and Analysis of a Zero Trust Network Access (ZTNA) Architecture
+**Project:** Design, Simulation, and Analysis of a Zero Trust Network Access (ZTNA) Architecture
 
 **Author:** Sahar Effat Mahmoud Ali
 
+**Institution:** Arab Open University — Egypt
+
+**Degree:** BSc in Information Technology and Computing
+
 **Academic Year:** 2025–2026
 
-The work focuses on the design, implementation, and controlled experimental evaluation of Zero Trust security principles.
+**Research Areas:** Cybersecurity, Network Security, Zero Trust Architecture, Access Control, Behavioral Threat Detection, and Security Analytics.
 
-**Research Areas:** Cybersecurity, Network Security, Zero Trust Architecture, Policy-Based Access Control, Behavioral Threat Detection, and Security Analytics.
-
-## 15. Ethical and Responsible Use
-
-All security tests were designed for a controlled simulation environment.
-
-The project is intended for academic research, educational experimentation, and authorized cybersecurity analysis.
-
-It should not be used to test networks or systems without explicit permission.
+All security experiments were performed within a controlled simulation environment for academic research and educational purposes.
