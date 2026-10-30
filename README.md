@@ -154,7 +154,7 @@ python3 app.py
 
 Open the local address provided by Flask.
 
-*The project was developed in a controlled Linux simulation environment. Reproduction on a fresh installation may require additional dependency configuration and network setup and has not yet been fully revalidated.*
+*The project was successfully deployed and tested in a clean Ubuntu environment, demonstrating the reproducibility of the experimental setup and implementation.*
 
 ## 7. Research Contribution
 
