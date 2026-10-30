@@ -15,6 +15,11 @@ The experimental design consists of three phases:
 3. **Phase 3 — Zero Trust Architecture:** A context-aware access-control system integrating behavioral detection, cumulative risk scoring, policy decisions, and automated enforcement.
 
 The primary objective is to experimentally evaluate how Zero Trust principles improve access control, restrict unauthorized internal communication, and support threat containment compared with traditional network security approaches.
+### System Architecture
+
+![ZTNA Simulation Architecture](docs/images/ztna-architecture.png)
+
+*Figure 1. High-level architecture of the three-phase ZTNA simulation, showing the protected resources, security control layer, traffic sources, and monitoring components.*
 
 ## 2. Research Objectives
 
