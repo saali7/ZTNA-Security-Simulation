@@ -1,0 +1,7 @@
+[TEST] Trusted USER performs port scan against APP_SERVER
+Port 21: decision=ALLOW event=NORMAL risk=LOW result=nc: connect to ANON_HOST_002 port 21 (tcp) failed: Connection refused
+Port 22: decision=ALLOW event=NORMAL risk=LOW result=nc: connect to ANON_HOST_002 port 22 (tcp) failed: Connection refused
+Port 23: decision=ALLOW event=NORMAL risk=LOW result=nc: connect to ANON_HOST_002 port 23 (tcp) failed: Connection refused
+Port 25: decision=ALLOW event=NORMAL risk=LOW result=nc: connect to ANON_HOST_002 port 25 (tcp) failed: Connection refused
+Port 80: decision=ALLOW event=NORMAL risk=LOW result=Connection to ANON_HOST_002 80 port [tcp/http] succeeded!
+Port 443: decision=QUARANTINE event=PORT_SCAN risk=HIGH result=nc: connect to ANON_HOST_002 port 443 (tcp) timed out: Operation now in progress

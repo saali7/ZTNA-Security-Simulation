@@ -1,0 +1,18 @@
+15:37:12.413274 s1-eth3 P   IP ANON_HOST_004.46286 > ANON_HOST_002.80: Flags [S], seq 1253640202, win 42340, options [mss 1460,sackOK,TS val 1893413530 ecr 0,nop,wscale 9], length 0
+15:37:12.413874 s1-eth1 Out IP ANON_HOST_004.46286 > ANON_HOST_002.80: Flags [S], seq 1253640202, win 42340, options [mss 1460,sackOK,TS val 1893413530 ecr 0,nop,wscale 9], length 0
+15:37:12.413902 s1-eth1 P   IP ANON_HOST_002.80 > ANON_HOST_004.46286: Flags [R.], seq 0, ack 1253640203, win 0, length 0
+15:37:12.414433 s1-eth3 Out IP ANON_HOST_002.80 > ANON_HOST_004.46286: Flags [R.], seq 0, ack 1, win 0, length 0
+15:37:13.539146 s1-eth3 P   IP ANON_HOST_004.55348 > ANON_HOST_001.80: Flags [S], seq 1031283990, win 42340, options [mss 1460,sackOK,TS val 1664384546 ecr 0,nop,wscale 9], length 0
+15:37:13.539600 s1-eth4 Out IP ANON_HOST_004.55348 > ANON_HOST_001.80: Flags [S], seq 1031283990, win 42340, options [mss 1460,sackOK,TS val 1664384546 ecr 0,nop,wscale 9], length 0
+15:37:13.539626 s1-eth4 P   IP ANON_HOST_001.80 > ANON_HOST_004.55348: Flags [R.], seq 0, ack 1031283991, win 0, length 0
+15:37:13.539921 s1-eth3 Out IP ANON_HOST_001.80 > ANON_HOST_004.55348: Flags [R.], seq 0, ack 1, win 0, length 0
+15:37:14.624922 s1-eth3 B   ARP, Request who-has ANON_HOST_003 tell ANON_HOST_004, length 28
+15:37:14.625745 s1-eth4 Out ARP, Request who-has ANON_HOST_003 tell ANON_HOST_004, length 28
+15:37:14.625748 s1-eth2 Out ARP, Request who-has ANON_HOST_003 tell ANON_HOST_004, length 28
+15:37:14.625749 s1-eth1 Out ARP, Request who-has ANON_HOST_003 tell ANON_HOST_004, length 28
+15:37:14.625770 s1-eth2 P   ARP, Reply ANON_HOST_003 is-at 00:00:00:00:00:02, length 28
+15:37:14.626309 s1-eth3 Out ARP, Reply ANON_HOST_003 is-at 00:00:00:00:00:02, length 28
+15:37:14.626319 s1-eth3 P   IP ANON_HOST_004.51342 > ANON_HOST_003.80: Flags [S], seq 141239231, win 42340, options [mss 1460,sackOK,TS val 3333205019 ecr 0,nop,wscale 9], length 0
+15:37:14.626640 s1-eth2 Out IP ANON_HOST_004.51342 > ANON_HOST_003.80: Flags [S], seq 141239231, win 42340, options [mss 1460,sackOK,TS val 3333205019 ecr 0,nop,wscale 9], length 0
+15:37:14.626668 s1-eth2 P   IP ANON_HOST_003.80 > ANON_HOST_004.51342: Flags [R.], seq 0, ack 141239232, win 0, length 0
+15:37:14.627178 s1-eth3 Out IP ANON_HOST_003.80 > ANON_HOST_004.51342: Flags [R.], seq 0, ack 1, win 0, length 0

@@ -1,0 +1,5 @@
+[TEST] USER -> APP_SERVER HTTP
+Decision: ALLOW | Event: NORMAL | Risk: LOW | HTTP: 200
+
+[TEST] USER -> DATABASE direct access
+Decision: DENY | Event: LATERAL_MOVEMENT | Risk: MEDIUM | nc: nc: connect to ANON_HOST_001 port 3306 (tcp) timed out: Operation now in progress

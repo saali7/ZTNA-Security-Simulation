@@ -1,0 +1,6 @@
+Port 21: decision=DENY event=NORMAL risk=LOW result=nc: connect to ANON_HOST_002 port 21 (tcp) timed out: Operation now in progress
+Port 22: decision=DENY event=NORMAL risk=LOW result=nc: connect to ANON_HOST_002 port 22 (tcp) timed out: Operation now in progress
+Port 23: decision=DENY event=NORMAL risk=LOW result=nc: connect to ANON_HOST_002 port 23 (tcp) timed out: Operation now in progress
+Port 25: decision=DENY event=NORMAL risk=LOW result=nc: connect to ANON_HOST_002 port 25 (tcp) timed out: Operation now in progress
+Port 80: decision=DENY event=NORMAL risk=LOW result=nc: connect to ANON_HOST_002 port 80 (tcp) timed out: Operation now in progress
+Port 443: decision=QUARANTINE event=PORT_SCAN risk=HIGH result=nc: connect to ANON_HOST_002 port 443 (tcp) timed out: Operation now in progress

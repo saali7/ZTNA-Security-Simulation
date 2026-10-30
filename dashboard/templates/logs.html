@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="compact-header simple">
+  <div>
+    <p class="eyebrow">Logs & Evidence</p>
+    <h1>Evidence Collected</h1>
+    <p>Raw logs, anonymized logs, PCAP captures, converted capture text, and summary CSV files.</p>
+  </div>
+</section>
+
+<section class="panel">
+  <div class="evidence-grid">
+    <div class="evidence-card">Raw logs</div>
+    <div class="evidence-card">Anonymized logs</div>
+    <div class="evidence-card">PCAP captures</div>
+    <div class="evidence-card">Converted capture text</div>
+    <div class="evidence-card">Phase summary CSV</div>
+  </div>
+</section>
+
+<section class="panel">
+  <div class="section-head">
+    <h2>Log Files</h2>
+    <p>Reading from {{ log_dir }}</p>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>File</th><th>Category</th><th>Size</th><th>Open</th></tr></thead>
+      <tbody>
+        {% for file in log_files %}
+        <tr>
+          <td>{{ file.name }}</td>
+          <td>{{ file.category }}</td>
+          <td>{{ file.size }}</td>
+          <td><a class="open-link" href="/log/{{ file.name }}">Open</a></td>
+        </tr>
+        {% else %}
+        <tr><td colspan="4">No logs found.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endblock %}

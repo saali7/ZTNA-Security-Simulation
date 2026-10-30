@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="compact-header simple">
+  <div>
+    <p class="eyebrow">Log Viewer</p>
+    <h1>{{ filename }}</h1>
+  </div>
+</section>
+<section class="panel">
+  <pre class="log-box">{{ content|safe }}</pre>
+</section>
+{% endblock %}

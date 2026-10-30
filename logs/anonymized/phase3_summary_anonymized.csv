@@ -1,0 +1,12 @@
+test_name,scenario,expected_decision,actual_decision,event,risk_score,risk_level,attempts_before_decision,detection_time_seconds,evidence,status
+normal_policy,USER to APP_SERVER,ALLOW,ALLOW,NORMAL,0,LOW,1,0.149,HTTP=200,PASS
+normal_policy,USER to DATABASE,DENY,DENY,LATERAL_MOVEMENT,5,MEDIUM,1,3.139,nc: connect to ANON_HOST_001 port 3306 (tcp) timed out: Operation now in progress,PASS
+app_to_database,APP_SERVER to DATABASE,ALLOW,ALLOW,NORMAL,0,LOW,1,0.121,Connection to ANON_HOST_001 3306 port [tcp/mysql] succeeded!,PASS
+unknown_http_access,UNKNOWN to APP_SERVER HTTP,DENY,DENY,NORMAL,0,LOW,1,3.109,HTTP=000,PASS
+unknown_to_database,UNKNOWN to DATABASE,DENY,DENY,LATERAL_MOVEMENT,5,MEDIUM,1,2.145,nc: connect to ANON_HOST_001 port 3306 (tcp) timed out: Operation now in progress,PASS
+app_server_to_user,APP_SERVER to USER,DENY,DENY,NORMAL,0,LOW,1,3.146,HTTP=000,PASS
+port_scan,UNKNOWN scans multiple ports,QUARANTINE,QUARANTINE,PORT_SCAN,10,HIGH,6,6.526,last_event=PORT_SCAN,PASS
+trusted_user_port_scan,Trusted USER scans multiple ports,QUARANTINE,QUARANTINE,PORT_SCAN,10,HIGH,6,6.665,last_event=PORT_SCAN,PASS
+subnet_scan,UNKNOWN scans several hosts,QUARANTINE,QUARANTINE,SUBNET_SCAN,15,HIGH,3,3.290,last_event=SUBNET_SCAN,PASS
+syn_flood,UNKNOWN SYN flood against APP_SERVER,QUARANTINE,QUARANTINE,SYN_FLOOD,20,HIGH,31,0.171,iterations=31; hping3=True,PASS
+lateral_movement,UNKNOWN to USER,DENY,DENY,LATERAL_MOVEMENT,5,MEDIUM,1,3.126,HTTP=000,PASS

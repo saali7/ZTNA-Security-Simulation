@@ -1,0 +1,1 @@
+Decision: DENY | Event: LATERAL_MOVEMENT | Risk: MEDIUM | HTTP: 000

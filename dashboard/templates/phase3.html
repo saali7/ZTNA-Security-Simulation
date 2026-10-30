@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="compact-header simple">
+  <div>
+    <p class="eyebrow">Phase 3 Details</p>
+    <h1>Zero Trust Decisions and Policy Logic</h1>
+    <p>Detailed view of Phase 3 summary results and explicit access policies.</p>
+  </div>
+</section>
+
+<section class="panel">
+  <div class="section-head">
+    <h2>Phase 3 Summary Table</h2>
+    <p>Rows are loaded from <code>phase3_summary.csv</code>.</p>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Test</th>
+          <th>Scenario</th>
+          <th>Expected</th>
+          <th>Actual</th>
+          <th>Event</th>
+          <th>Risk</th>
+          <th>Attempts</th>
+          <th>Time</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in rows %}
+        <tr>
+          <td>{{ row.test_name }}</td>
+          <td>{{ row.scenario }}</td>
+          <td><span class="pill {{ row.expected_decision|lower }}">{{ row.expected_decision }}</span></td>
+          <td><span class="pill {{ row.actual_decision|lower }}">{{ row.actual_decision }}</span></td>
+          <td>{{ row.event }}</td>
+          <td>{{ row.risk_level }} / {{ row.risk_score }}</td>
+          <td>{{ row.attempts_before_decision }}</td>
+          <td>{{ row.detection_time_seconds }}s</td>
+          <td><span class="pill {{ row.status|lower }}">{{ row.status }}</span></td>
+        </tr>
+        {% else %}
+        <tr><td colspan="9">No Phase 3 summary found. Run Phase 3 first.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="panel">
+  <div class="section-head">
+    <h2>Policy Matrix</h2>
+    <p>Explicit access logic mapped to the tests.</p>
+  </div>
+  <div class="policy-grid">
+    {% for rule, decision, desc in policy_matrix %}
+    <article class="policy-card">
+      <h3>{{ rule }}</h3>
+      <span class="pill {{ decision|lower }}">{{ decision }}</span>
+      <p>{{ desc }}</p>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

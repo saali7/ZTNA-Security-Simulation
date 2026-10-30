@@ -1,0 +1,30 @@
+15:36:08.111310 s1-eth2 B   ARP, Request who-has ANON_HOST_002 tell ANON_HOST_003, length 28
+15:36:08.111713 s1-eth4 Out ARP, Request who-has ANON_HOST_002 tell ANON_HOST_003, length 28
+15:36:08.111715 s1-eth3 Out ARP, Request who-has ANON_HOST_002 tell ANON_HOST_003, length 28
+15:36:08.111716 s1-eth1 Out ARP, Request who-has ANON_HOST_002 tell ANON_HOST_003, length 28
+15:36:08.111738 s1-eth1 P   ARP, Reply ANON_HOST_002 is-at 00:00:00:00:00:01, length 28
+15:36:08.112113 s1-eth2 Out ARP, Reply ANON_HOST_002 is-at 00:00:00:00:00:01, length 28
+15:36:08.112128 s1-eth2 P   IP ANON_HOST_003.54860 > ANON_HOST_002.80: Flags [S], seq 994621473, win 42340, options [mss 1460,sackOK,TS val 3585022099 ecr 0,nop,wscale 9], length 0
+15:36:08.112344 s1-eth1 Out IP ANON_HOST_003.54860 > ANON_HOST_002.80: Flags [S], seq 994621473, win 42340, options [mss 1460,sackOK,TS val 3585022099 ecr 0,nop,wscale 9], length 0
+15:36:08.112397 s1-eth1 P   IP ANON_HOST_002.80 > ANON_HOST_003.54860: Flags [S.], seq 3935889237, ack 994621474, win 43440, options [mss 1460,sackOK,TS val 2448657589 ecr 3585022099,nop,wscale 9], length 0
+15:36:08.112930 s1-eth2 Out IP ANON_HOST_002.80 > ANON_HOST_003.54860: Flags [S.], seq 3935889237, ack 994621474, win 43440, options [mss 1460,sackOK,TS val 2448657589 ecr 3585022099,nop,wscale 9], length 0
+15:36:08.112998 s1-eth2 P   IP ANON_HOST_003.54860 > ANON_HOST_002.80: Flags [.], ack 1, win 83, options [nop,nop,TS val 3585022100 ecr 2448657589], length 0
+15:36:08.113001 s1-eth1 Out IP ANON_HOST_003.54860 > ANON_HOST_002.80: Flags [.], ack 1, win 83, options [nop,nop,TS val 3585022100 ecr 2448657589], length 0
+15:36:08.113228 s1-eth2 P   IP ANON_HOST_003.54860 > ANON_HOST_002.80: Flags [P.], seq 1:73, ack 1, win 83, options [nop,nop,TS val 3585022101 ecr 2448657589], length 72: HTTP: GET / HTTP/1.1
+15:36:08.113230 s1-eth1 Out IP ANON_HOST_003.54860 > ANON_HOST_002.80: Flags [P.], seq 1:73, ack 1, win 83, options [nop,nop,TS val 3585022101 ecr 2448657589], length 72: HTTP: GET / HTTP/1.1
+15:36:08.113235 s1-eth1 P   IP ANON_HOST_002.80 > ANON_HOST_003.54860: Flags [.], ack 73, win 85, options [nop,nop,TS val 2448657590 ecr 3585022101], length 0
+15:36:08.113236 s1-eth2 Out IP ANON_HOST_002.80 > ANON_HOST_003.54860: Flags [.], ack 73, win 85, options [nop,nop,TS val 2448657590 ecr 3585022101], length 0
+15:36:08.115505 s1-eth1 P   IP ANON_HOST_002.80 > ANON_HOST_003.54860: Flags [P.], seq 1:158, ack 73, win 85, options [nop,nop,TS val 2448657592 ecr 3585022101], length 157: HTTP: HTTP/1.0 200 OK
+15:36:08.115510 s1-eth2 Out IP ANON_HOST_002.80 > ANON_HOST_003.54860: Flags [P.], seq 1:158, ack 73, win 85, options [nop,nop,TS val 2448657592 ecr 3585022101], length 157: HTTP: HTTP/1.0 200 OK
+15:36:08.115602 s1-eth2 P   IP ANON_HOST_003.54860 > ANON_HOST_002.80: Flags [.], ack 158, win 83, options [nop,nop,TS val 3585022103 ecr 2448657592], length 0
+15:36:08.115605 s1-eth1 Out IP ANON_HOST_003.54860 > ANON_HOST_002.80: Flags [.], ack 158, win 83, options [nop,nop,TS val 3585022103 ecr 2448657592], length 0
+15:36:08.115640 s1-eth1 P   IP ANON_HOST_002.80 > ANON_HOST_003.54860: Flags [P.], seq 158:1340, ack 73, win 85, options [nop,nop,TS val 2448657592 ecr 3585022103], length 1182: HTTP
+15:36:08.115642 s1-eth2 Out IP ANON_HOST_002.80 > ANON_HOST_003.54860: Flags [P.], seq 158:1340, ack 73, win 85, options [nop,nop,TS val 2448657592 ecr 3585022103], length 1182: HTTP
+15:36:08.115649 s1-eth2 P   IP ANON_HOST_003.54860 > ANON_HOST_002.80: Flags [.], ack 1340, win 89, options [nop,nop,TS val 3585022103 ecr 2448657592], length 0
+15:36:08.115650 s1-eth1 Out IP ANON_HOST_003.54860 > ANON_HOST_002.80: Flags [.], ack 1340, win 89, options [nop,nop,TS val 3585022103 ecr 2448657592], length 0
+15:36:08.115690 s1-eth1 P   IP ANON_HOST_002.80 > ANON_HOST_003.54860: Flags [F.], seq 1340, ack 73, win 85, options [nop,nop,TS val 2448657592 ecr 3585022103], length 0
+15:36:08.115691 s1-eth2 Out IP ANON_HOST_002.80 > ANON_HOST_003.54860: Flags [F.], seq 1340, ack 73, win 85, options [nop,nop,TS val 2448657592 ecr 3585022103], length 0
+15:36:08.115998 s1-eth2 P   IP ANON_HOST_003.54860 > ANON_HOST_002.80: Flags [F.], seq 73, ack 1341, win 89, options [nop,nop,TS val 3585022103 ecr 2448657592], length 0
+15:36:08.116001 s1-eth1 Out IP ANON_HOST_003.54860 > ANON_HOST_002.80: Flags [F.], seq 73, ack 1341, win 89, options [nop,nop,TS val 3585022103 ecr 2448657592], length 0
+15:36:08.116015 s1-eth1 P   IP ANON_HOST_002.80 > ANON_HOST_003.54860: Flags [.], ack 74, win 85, options [nop,nop,TS val 2448657592 ecr 3585022103], length 0
+15:36:08.116016 s1-eth2 Out IP ANON_HOST_002.80 > ANON_HOST_003.54860: Flags [.], ack 74, win 85, options [nop,nop,TS val 2448657592 ecr 3585022103], length 0

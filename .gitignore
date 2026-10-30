@@ -1,0 +1,29 @@
+
+# Python generated files
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Environment variables and secrets
+.env
+.env.*
+*.pem
+*.key
+
+# Network capture files
+*.pcap
+*.pcapng
+*.tcpdump.log
+captures/
+
+# macOS files
+.DS_Store
+
+# Editor files
+.vscode/
+*.swp
+
+# Large generated evidence
+syn_flood_capture_anonymized.txt

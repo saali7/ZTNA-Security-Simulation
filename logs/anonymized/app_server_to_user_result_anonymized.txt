@@ -1,0 +1,2 @@
+[TEST] APP_SERVER -> USER access
+Decision: DENY | Event: NORMAL | Risk: LOW | HTTP: 000

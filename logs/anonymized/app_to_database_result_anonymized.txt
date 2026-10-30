@@ -1,0 +1,2 @@
+[TEST] APP_SERVER -> DATABASE access
+Decision: ALLOW | Event: NORMAL | Risk: LOW | nc: Connection to ANON_HOST_001 3306 port [tcp/mysql] succeeded!

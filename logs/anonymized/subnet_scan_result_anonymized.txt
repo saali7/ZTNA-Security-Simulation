@@ -1,0 +1,3 @@
+Target ANON_HOST_002: decision=DENY event=NORMAL risk=LOW result=nc: connect to ANON_HOST_002 port 80 (tcp) timed out: Operation now in progress
+Target ANON_HOST_001: decision=DENY event=LATERAL_MOVEMENT risk=MEDIUM result=nc: connect to ANON_HOST_001 port 80 (tcp) timed out: Operation now in progress
+Target ANON_HOST_003: decision=QUARANTINE event=SUBNET_SCAN risk=HIGH result=nc: connect to ANON_HOST_003 port 80 (tcp) timed out: Operation now in progress

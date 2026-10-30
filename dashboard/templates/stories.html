@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="compact-header simple">
+  <div>
+    <p class="eyebrow">Attack Stories</p>
+    <h1>How the Zero Trust Model Reacts</h1>
+    <p>Each story explains the detection-to-enforcement path for discussion and demo.</p>
+  </div>
+</section>
+
+<section class="story-grid">
+  {% for story in attack_stories %}
+  <article class="story-card">
+    <div class="story-title">
+      <h2>{{ story.title }}</h2>
+      <span>{{ story.level }}</span>
+    </div>
+    <ol>
+      {% for step in story.steps %}
+      <li>{{ step }}</li>
+      {% endfor %}
+    </ol>
+  </article>
+  {% endfor %}
+</section>
+{% endblock %}

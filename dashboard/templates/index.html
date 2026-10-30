@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="compact-header">
+  <div>
+    <p class="eyebrow">ZTNA Evaluation Dashboard</p>
+    <h1>Phase Comparison, Decisions, and Evidence</h1>
+    <p>Visual comparison between the baseline flat network, traditional firewall phase, and Zero Trust phase using saved experiment results.</p>
+  </div>
+  <div class="result-card">
+    <span>Phase 3 Result</span>
+    <strong>{{ counts.PASS }} PASS / {{ counts.FAIL }} FAIL</strong>
+    <small>Based on phase3_summary.csv</small>
+  </div>
+</section>
+
+<section class="panel">
+  <div class="section-head">
+    <h2>Three-Phase Result Comparison</h2>
+    <p>Small visual comparison using saved logs and Phase 3 summary results.</p>
+  </div>
+
+  <div class="phase-grid">
+    {% for p in phases %}
+    <article class="phase-card phase-{{ loop.index }}">
+      <div class="phase-top">
+        <span>{{ p.phase }}</span>
+        <span class="risk risk-{{ p.risk|lower }}">{{ p.risk }} Risk</span>
+      </div>
+      <h3>{{ p.model }}</h3>
+      <p>{{ p.summary }}</p>
+      <div class="meter">
+        <span style="width: {{ p.score }}%"></span>
+      </div>
+      <small>{{ p.evidence }}</small>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="panel">
+  <div class="section-head">
+    <h2>Phase 3 Decision Metrics</h2>
+    <p>Quick summary of Zero Trust decisions.</p>
+  </div>
+
+  <div class="metric-grid">
+    <div class="metric allow">
+      <span>Allow</span>
+      <strong>{{ counts.ALLOW }}</strong>
+    </div>
+
+    <div class="metric deny">
+      <span>Deny</span>
+      <strong>{{ counts.DENY }}</strong>
+    </div>
+
+    <div class="metric quarantine">
+      <span>Quarantine</span>
+      <strong>{{ counts.QUARANTINE }}</strong>
+    </div>
+
+    <div class="metric pass">
+      <span>Pass</span>
+      <strong>{{ counts.PASS }}</strong>
+    </div>
+
+    <div class="metric fail">
+      <span>Fail</span>
+      <strong>{{ counts.FAIL }}</strong>
+    </div>
+  </div>
+</section>
+
+<section class="panel">
+  <div class="section-head">
+    <h2>Common Test Comparison</h2>
+    <p>Database-only tests are unique to Phase 3 because Phase 1 and Phase 2 do not include a database host.</p>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Scenario</th>
+          <th>Phase 1 Baseline</th>
+          <th>Phase 2 Firewall</th>
+          <th>Phase 3 Zero Trust</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for row in common_comparison %}
+        <tr>
+          <td>{{ row.scenario }}</td>
+
+          <td>
+            <span class="pill {{ 'pass' if row.p1_available else 'fail' }}">
+              {{ 'Available' if row.p1_available else 'Missing' }}
+            </span>
+            <br>
+            <small>{{ row.p1_note }}</small>
+          </td>
+
+          <td>
+            <span class="pill {{ row.p2_status if row.p2_available else 'fail' }}">
+              {{ row.p2_label if row.p2_available else 'Missing' }}
+            </span>
+            <br>
+            <small>{{ row.p2_note }}</small>
+          </td>
+
+          <td>
+            <span class="pill {{ row.p3_status|lower if row.p3_status else 'pass' }}">
+               {{ row.p3_status|upper if row.p3_status else 'PASS' }}
+            </span>
+            <br>
+            <small>{{ row.p3_label }} — {{ row.p3_note }}</small>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="panel">
+  <div class="section-head">
+    <h2>Zero Trust Decision Pipeline</h2>
+    <p>How Phase 3 processes each request.</p>
+  </div>
+
+  <div class="pipeline">
+    <div>
+      <strong>Identity</strong>
+      <span>Who is the host?</span>
+    </div>
+
+    <div>
+      <strong>Behavior</strong>
+      <span>What is it doing?</span>
+    </div>
+
+    <div>
+      <strong>Risk</strong>
+      <span>LOW / MEDIUM / HIGH</span>
+    </div>
+
+    <div>
+      <strong>Policy</strong>
+      <span>ALLOW / DENY / QUARANTINE</span>
+    </div>
+
+    <div>
+      <strong>Enforcement</strong>
+      <span>iptables rules</span>
+    </div>
+
+    <div>
+      <strong>Logs</strong>
+      <span>raw + anonymized</span>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

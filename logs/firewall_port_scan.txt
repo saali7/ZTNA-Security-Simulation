@@ -1,0 +1,9 @@
+Starting Nmap 7.80 ( https://nmap.org ) at 2026-05-14 15:38 EEST
+Nmap scan report for 10.0.0.1
+Host is up (0.00016s latency).
+Not shown: 999 closed ports
+PORT   STATE SERVICE
+80/tcp open  http
+MAC Address: 7E:EC:CE:78:DF:68 (Unknown)
+
+Nmap done: 1 IP address (1 host up) scanned in 113.40 seconds

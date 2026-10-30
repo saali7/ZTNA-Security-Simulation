@@ -1,0 +1,6 @@
+HTTP/1.0 200 OK
+[1mServer[0m: SimpleHTTP/0.6 Python/3.10.12
+[1mDate[0m: Thu, 14 May 2026 12:37:52 GMT
+[1mContent-type[0m: text/html; charset=utf-8
+[1mContent-Length[0m: 647
+
